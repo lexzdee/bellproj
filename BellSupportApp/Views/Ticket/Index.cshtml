@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BellSupportApp.Models.Ticket>
+@{
+    ViewBag.Title = "Support Tickets";
+}
+
+<div class="jumbotron jumbotron-fluid">
+    <h2>Welcome to Bell Support Page</h2>
+</div>
+
+
+<h3>SUPPORT TICKETS</h3>
+
+@*
+    @Html.ActionLink("Create New", "Create")
+*@
+<br />
+@using (Html.BeginForm())
+{
+    <p>
+        Find Support Ticket: @Html.TextBox("searchTicket")
+        <input type="submit" value="Search" />
+    </p>
+
+    <br />
+}
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.ActionLink("Project Name", "Index", new { sortTicket = ViewBag.ProjSort })
+        </th>
+        <th>
+            @Html.ActionLink("Department", "Index", new { sortTicket = ViewBag.DepSort })
+        </th>
+        <th>
+            @Html.ActionLink("Description", "Index", new { sortTicket = ViewBag.DescSort })
+        </th>
+        <th>
+            @Html.ActionLink("Requestor", "Index", new { sortTicket = ViewBag.ReqSort })
+        </th>
+        <th>
+            @Html.ActionLink("Request Date", "Index", new { sortTicket = ViewBag.DateSort })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requestor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.TicketID })
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.TicketID }) |
+                    |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TicketID })*@
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BellSupportApp.ChartView.Chart>
+@{
+    ViewBag.Title = "Project Chart";
+}
+
+<h3>PROJECT CHART</h3>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Project Name
+        </th>
+        <th>
+            Number of Tickets
+        </th>
+    </tr>
+
+    @foreach(var i in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => i.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => i.TicketCount)  
+            </td>
+        </tr>
+    }
+</table>
